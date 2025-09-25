@@ -1,10 +1,7 @@
 package org.example.chapter02.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.chapter02.domain.Folder;
-import org.example.chapter02.domain.FolderRequest;
-import org.example.chapter02.domain.FolderResponse;
-import org.example.chapter02.domain.FolderService;
+import org.example.chapter02.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,12 +30,24 @@ public class ApiController {
     }
 
     @PostMapping()
-    public ResponseEntity<FolderResponse> createFolder(
-            @RequestBody FolderRequest folderRequest
-            ){
-
-        System.out.println(folderRequest.toString());
+    public ResponseEntity<FolderResponse> createFolder(@RequestBody FolderRequest folderRequest){
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(folderService.createFolderResponse(folderRequest));
     }
+
+    @DeleteMapping("/{folderNo}")
+    public DeleteFolderResultResponse deleteFolder(@PathVariable Long folderNo
+    ){
+        return new DeleteFolderResultResponse(Boolean.TRUE, "success");
+    }
+
+    @PutMapping(path="/{folderNo}")
+    public ResponseEntity updateFolder(
+            @PathVariable Long folderNo
+    ){
+
+
+    }
+
+
 }
