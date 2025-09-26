@@ -43,10 +43,12 @@ public class ApiController {
 
     @PutMapping(path="/{folderNo}")
     public ResponseEntity updateFolder(
-            @PathVariable Long folderNo
+            @PathVariable Long folderNo ,
+            @RequestBody FolderUpdateRequest folderUpdateRequest
     ){
+        folderService.updateFolder(folderUpdateRequest);
 
-
+        return ResponseEntity.noContent().build();
     }
 
 

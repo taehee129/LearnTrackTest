@@ -22,4 +22,7 @@ public class FolderService {
         return new FolderResponse();
     }
 
+    public void updateFolder(FolderUpdateRequest folderUpdateRequest){
+
+    }
 }
